@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
@@ -207,36 +208,35 @@ PreparedStatement pst;
     }// </editor-fold>//GEN-END:initComponents
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-    boolean no = true ;
-    int dialogButton = JOptionPane.YES_NO_OPTION;
     
-    
-    
-    JOptionPane.showConfirmDialog (null, "คุณต้องการออกจากเกมส์ใช่หรือไม่","Warning",dialogButton);
-            
-    
-     
-    
-    
-    
-    
-        if (dialogButton == JOptionPane.YES_OPTION) {
-                JOptionPane.showMessageDialog(null,dialogButton);
-                    System.exit(0);
+        JDialog.setDefaultLookAndFeelDecorated(true);
+    int response = JOptionPane.showConfirmDialog(null,"คุณต้องการออกจากเกมส์ใช่หรือไม่", "Confirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (response == JOptionPane.NO_OPTION) {
+      
+    } else if (response == JOptionPane.YES_OPTION) {
+            System.exit(0);
 
 
-        }
-         else if (dialogButton == JOptionPane.NO_OPTION) {
+    } 
+        
+        
+        
+       
+      //  if (dialogButton == JOptionPane.YES_OPTION) {
+      //         JOptionPane.showMessageDialog(null,dialogButton);
+      //              System.exit(0);
 
-            Lobby go = new  Lobby();
-            go.setVisible(true);
-         
 
+      //}
+       // else if (dialogButton == JOptionPane.NO_OPTION) {
 
+        //   Lobby go = new  Lobby();
+        // go.setVisible(true); }
+        
     }//GEN-LAST:event_ExitActionPerformed
   
    
-    }
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        new room1().setVisible(true);
        this.dispose();
