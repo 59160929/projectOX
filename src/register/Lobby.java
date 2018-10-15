@@ -28,10 +28,10 @@ PreparedStatement pst;
     public Lobby() {
         PreparedStatement pst;
         initComponents();
-        showData();
+         ShowRoom();
         
     }
-    public void showData(){
+    public void  ShowRoom(){
         try{
             String serverName = "db144.hostinger.in.th";
             String mydatabase = "u572797458_soft";
@@ -40,7 +40,7 @@ PreparedStatement pst;
             String password = "password0880";
             Connection connection = DriverManager.getConnection(url, username, password);
             connection.createStatement();
-            String sql="SELECT *from room";
+            String sql="SELECT idroom,NameRoom,StatusRoom  FROM room;";
             pst=connection.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
            table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -210,29 +210,13 @@ PreparedStatement pst;
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
     
         JDialog.setDefaultLookAndFeelDecorated(true);
-    int response = JOptionPane.showConfirmDialog(null,"คุณต้องการออกจากเกมส์ใช่หรือไม่", "Confirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-    if (response == JOptionPane.NO_OPTION) {
+        int response = JOptionPane.showConfirmDialog(null,"คุณต้องการออกจากเกมส์ใช่หรือไม่", "Confirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+         if (response == JOptionPane.NO_OPTION) {
       
-    } else if (response == JOptionPane.YES_OPTION) {
+    }   else if (response == JOptionPane.YES_OPTION) {
             System.exit(0);
-
-
     } 
-        
-        
-        
-       
-      //  if (dialogButton == JOptionPane.YES_OPTION) {
-      //         JOptionPane.showMessageDialog(null,dialogButton);
-      //              System.exit(0);
-
-
-      //}
-       // else if (dialogButton == JOptionPane.NO_OPTION) {
-
-        //   Lobby go = new  Lobby();
-        // go.setVisible(true); }
-        
+   
     }//GEN-LAST:event_ExitActionPerformed
   
    
@@ -248,9 +232,8 @@ PreparedStatement pst;
 
     private void profilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilebtnActionPerformed
         new Pro().setVisible(true);
-      this.dispose();       
+        this.dispose();       
       
-// TODO add your handling code here:
     }//GEN-LAST:event_profilebtnActionPerformed
     
     /**

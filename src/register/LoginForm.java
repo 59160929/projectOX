@@ -230,15 +230,16 @@ private static final String CONN_STRING="jdbc:mysql://db144.hostinger.in.th/u572
       new Registrerform().setVisible(true);
       this.dispose();
     }//GEN-LAST:event_Register1ActionPerformed
-
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-
+        public boolean IsUserMatch() throws SQLException{
+            boolean Result=Usernamefield.getText().equals( new String(Passwordfield.getPassword()));
+            return Result;
+            
+            }
+    public boolean getUser() throws SQLException{
         PreparedStatement pst;
         Connection  connection  ;
-
-          
-        try {
-            String serverName = "db144.hostinger.in.th";
+    
+         String serverName = "db144.hostinger.in.th";
             String mydatabase = "u572797458_soft";
             String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
             String username = "u572797458_soft";
@@ -249,9 +250,17 @@ private static final String CONN_STRING="jdbc:mysql://db144.hostinger.in.th/u572
             pst=connection.prepareStatement("Select * from Username where Username = ? AND password= ?");
             pst.setString(1, Usernamefield.getText());
             pst.setString(2, String.valueOf(Passwordfield.getPassword()));
-  ResultSet rs = pst.executeQuery();
-          if(rs.next()){
-              if(Usernamefield.getText().equals( new String(Passwordfield.getPassword())));{
+            ResultSet rs = pst.executeQuery();
+            boolean Result=rs.next();
+            return Result;
+            
+}
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+
+        try {
+           
+          if(getUser()==true){
+              if(IsUserMatch()==true);{
               JOptionPane.showMessageDialog(this, "ลงชื่อเข้าใจสำเร็จ");
           }
              setVisible(false);
@@ -260,8 +269,8 @@ private static final String CONN_STRING="jdbc:mysql://db144.hostinger.in.th/u572
           }
           else{
                JOptionPane.showMessageDialog(this, "Username หรือ Password ผิดพลาด");
-                          Usernamefield.setText("");
-       Passwordfield.setText("");
+                Usernamefield.setText("");
+                Passwordfield.setText("");
           }
         }catch(SQLException ex){
          

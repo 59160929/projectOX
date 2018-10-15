@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
@@ -232,26 +233,18 @@ private static final String CONN_STRING="jdbc:mysql://db144.hostinger.in.th/u572
        Repasswordfield.setText("");
        // TODO add your handling code here:
     }//GEN-LAST:event_ClearActionPerformed
-
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-            PreparedStatement pst;
-            char[] a = Passwordfield.getPassword();
-            String testString = Arrays.toString(a);
-                if(Usernamefield.getText().equals("")||
-                        new String(Passwordfield.getPassword()).equals("")||
-                        new String(Repasswordfield.getPassword()).equals("")){
-                    JOptionPane.showMessageDialog(null,testString);
-                }else{
-                   
-                    if(testString.length()>8){
-                    JOptionPane.showMessageDialog(null,"รหัสผ่านจำเป็นต้องมีไม่น้อยกว่า 8 ตัวอักษร !");
-
-                
-                }
-                    else if( new String(Passwordfield.getPassword()).equals( new String(Repasswordfield.getPassword()))){
-
-                        try{
-                             String serverName = "db144.hostinger.in.th";
+    public boolean IsNull(){
+                       boolean check =Usernamefield.getText().equals("")||new String(Passwordfield.getPassword()).equals("")||new String(Repasswordfield.getPassword()).equals("");
+                       return check;
+    }
+      public boolean IsPasswordMisMatch(){
+                       boolean check =new String(Passwordfield.getPassword()).equals( new String(Repasswordfield.getPassword()));
+                       return check;
+    }        
+       public boolean IsUserExist() throws SQLException{
+                            PreparedStatement pst;
+                            String serverName = "db144.hostinger.in.th";
+       
                              String mydatabase = "u572797458_soft";
                              String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
                              String username = "u572797458_soft";
@@ -265,44 +258,55 @@ private static final String CONN_STRING="jdbc:mysql://db144.hostinger.in.th/u572
                             pst.setString(1,CheckUser);
                             ResultSet rs = pst.executeQuery();
 
-///
 
-                            boolean russ=rs.next();
-                            if(russ==true){
+                            boolean Result=rs.next();
+                            return Result;
+      
+      }
+       
+       
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+            PreparedStatement pst;
+            char[] a = Passwordfield.getPassword();
+            String testString = Arrays.toString(a);
+                if(IsNull()==true){
+                    JOptionPane.showMessageDialog(null,testString);
+                }else{
+                   
+                    if(testString.length()>8){
+                    JOptionPane.showMessageDialog(null,"รหัสผ่านจำเป็นต้องมีไม่น้อยกว่า 8 ตัวอักษร !");
+               
+                }
+                    else if( IsPasswordMisMatch()==true){
+                        try{
+                            if(IsUserExist()==true){
                                 JOptionPane.showMessageDialog(null,"มี User ซ้ำ");
                             }else {
                                 InsertUser();
 
                             }
-
-
                         }
-
                         catch(Exception String) {
                             JOptionPane.showMessageDialog(null,String);
-
                         }
-
 
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "รหัสผ่านไม่ตรงกัน");
-
                     }
                 }
-
-
        
     LoginForm go = new  LoginForm();
     go.setVisible(true);
     setVisible(false);
+    
     }//GEN-LAST:event_RegisterActionPerformed
 
     private void Register1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Register1ActionPerformed
        
         
         new LoginForm().setVisible(true);
-      this.dispose();   
+        this.dispose();   
     }//GEN-LAST:event_Register1ActionPerformed
 
     /**
@@ -338,7 +342,7 @@ private static final String CONN_STRING="jdbc:mysql://db144.hostinger.in.th/u572
     private register.Main register1;
     // End of variables declaration//GEN-END:variables
 
-    private void InsertUser() {
+    public void InsertUser() {
         PreparedStatement pst;
         try {
             String serverName = "db144.hostinger.in.th";

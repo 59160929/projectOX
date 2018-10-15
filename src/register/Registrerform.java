@@ -278,6 +278,58 @@ public class Registrerform extends javax.swing.JFrame {
 
      boolean russ=false;
 
+
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+      PreparedStatement pst;
+
+                if(Usernamefield.getText().equals("")||
+                        new String(Passwordfield.getPassword()).equals("")||
+                        new String(Repasswordfield.getPassword()).equals("")){
+                                            JOptionPane.showMessageDialog(null,"กรุณากรอกข้อมูลให้ครบ !");
+                    
+                }else{
+                    if(Usernamefield.getText().length()<5){
+                                            JOptionPane.showMessageDialog(null,"ชื่อผู้ใช้งานต้องมีไม่น้อยกว่า 5 ตัว !");
+                                            
+                    }else {
+                    if(new String(Passwordfield.getPassword()).length()<8){
+                                            JOptionPane.showMessageDialog(null,"รหัสผ่านต้องมีไม่น้อยกว่า 8 ตัว !");
+                                            
+                    }
+                    
+                    else if( new String(Passwordfield.getPassword()).equals( new String(Repasswordfield.getPassword()))){
+
+                        try{
+                            
+                            IsPasswordMismatch();
+                            
+                            if(russ==true){
+                                            JOptionPane.showMessageDialog(null,"ชื่อผู้ใช้งานซ้ำ !");
+                            }else {
+                                InsertUser(); //insert to table
+                                swap();   //change screen to 
+                            }
+
+
+                        }
+
+                        catch(Exception String) {
+                                            JOptionPane.showMessageDialog(null,String);
+
+                        }
+
+                    }
+                    else{
+                                            JOptionPane.showMessageDialog(null, "รหัสผ่านไม่ตรงกัน !");
+
+                    }
+                }
+                }
+
+
+       
+   
+    }//GEN-LAST:event_RegisterActionPerformed
      private void IsPasswordMismatch() throws SQLException{
                PreparedStatement pst;
 
@@ -300,53 +352,6 @@ public class Registrerform extends javax.swing.JFrame {
 
     }
     
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-      PreparedStatement pst;
-
-                if(Usernamefield.getText().equals("")||
-                        new String(Passwordfield.getPassword()).equals("")||
-                        new String(Repasswordfield.getPassword()).equals("")){
-                    JOptionPane.showMessageDialog(null,"กรุณากรอกข้อมูลให้ครบ !");
-                    
-                }else{
-                    if(new String(Passwordfield.getPassword()).length()<8){
-                                            JOptionPane.showMessageDialog(null,"รหัสผ่านต้องมีไม่น้อยกว่า 8 ตัว !");
-                                            
-                    }
-                    else if( new String(Passwordfield.getPassword()).equals( new String(Repasswordfield.getPassword()))){
-
-                        try{
-                            
-                            IsPasswordMismatch();
-                            
-                            if(russ==true){
-                                JOptionPane.showMessageDialog(null,"ชื่อผู้ใช้งานซ้ำ !");
-                            }else {
-                                InsertUser(); //insert to table
-                                swap();   //change screen to 
-                            }
-
-
-                        }
-
-                        catch(Exception String) {
-                            JOptionPane.showMessageDialog(null,String);
-
-                        }
-
-
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, "รหัสผ่านไม่ตรงกัน !");
-
-                    }
-                }
-
-
-       
-   
-    }//GEN-LAST:event_RegisterActionPerformed
-
     private void swap(){
             
              Lobby go = new  Lobby();
