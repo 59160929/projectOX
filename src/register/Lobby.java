@@ -226,7 +226,7 @@ PreparedStatement pst;
 
 
         }
-         else     if (dialogButton == JOptionPane.NO_OPTION) {
+         else if (dialogButton == JOptionPane.NO_OPTION) {
 
             Lobby go = new  Lobby();
             go.setVisible(true);

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /*
@@ -275,24 +276,12 @@ public class Registrerform extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_Register1ActionPerformed
 
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-      PreparedStatement pst;
+     boolean russ=false;
 
-                if(Usernamefield.getText().equals("")||
-                        new String(Passwordfield.getPassword()).equals("")||
-                        new String(Repasswordfield.getPassword()).equals("")){
-                    JOptionPane.showMessageDialog(null,"กรุณากรอกข้อมูลให้ครบ !");
-                    
-                }else{
-                    if(new String(Passwordfield.getPassword()).length()<8){
-                                            JOptionPane.showMessageDialog(null,"รหัสผ่านต้องมีไม่น้อยกว่า 8 ตัว !");
-                                            
+     private void IsPasswordMismatch() throws SQLException{
+               PreparedStatement pst;
 
-                    }
-                    else if( new String(Passwordfield.getPassword()).equals( new String(Repasswordfield.getPassword()))){
-
-                        try{
-                             String serverName = "db144.hostinger.in.th";
+         String serverName = "db144.hostinger.in.th";
                              String mydatabase = "u572797458_soft";
                              String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
                              String username = "u572797458_soft";
@@ -307,14 +296,34 @@ public class Registrerform extends javax.swing.JFrame {
                             ResultSet rs = pst.executeQuery();
 
 ///
+                            russ=rs.next();
 
-                            boolean russ=rs.next();
+    }
+    
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+      PreparedStatement pst;
+
+                if(Usernamefield.getText().equals("")||
+                        new String(Passwordfield.getPassword()).equals("")||
+                        new String(Repasswordfield.getPassword()).equals("")){
+                    JOptionPane.showMessageDialog(null,"กรุณากรอกข้อมูลให้ครบ !");
+                    
+                }else{
+                    if(new String(Passwordfield.getPassword()).length()<8){
+                                            JOptionPane.showMessageDialog(null,"รหัสผ่านต้องมีไม่น้อยกว่า 8 ตัว !");
+                                            
+                    }
+                    else if( new String(Passwordfield.getPassword()).equals( new String(Repasswordfield.getPassword()))){
+
+                        try{
+                            
+                            IsPasswordMismatch();
+                            
                             if(russ==true){
-                                System.out.println("regi5555");
-                                JOptionPane.showMessageDialog(null,"มี User ซ้ำ");
+                                JOptionPane.showMessageDialog(null,"ชื่อผู้ใช้งานซ้ำ !");
                             }else {
-                                InsertUser();
-                                swap();
+                                InsertUser(); //insert to table
+                                swap();   //change screen to 
                             }
 
 
@@ -328,7 +337,7 @@ public class Registrerform extends javax.swing.JFrame {
 
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "รหัสผ่านไม่ตรงกัน");
+                        JOptionPane.showMessageDialog(null, "รหัสผ่านไม่ตรงกัน !");
 
                     }
                 }
@@ -340,7 +349,7 @@ public class Registrerform extends javax.swing.JFrame {
 
     private void swap(){
             
-             LoginForm go = new  LoginForm();
+             Lobby go = new  Lobby();
             go.setVisible(true);
             setVisible(false);
         }
@@ -365,7 +374,7 @@ public class Registrerform extends javax.swing.JFrame {
             pst.setString(1, Usernamefield.getText());
             pst.setString(2,  new String(Passwordfield.getPassword()));
             pst.execute();
-            JOptionPane.showMessageDialog(null,"finish");
+            JOptionPane.showMessageDialog(null,"ลงทะเบียนสำเร็จ !");
             Usernamefield.setText("");
             Passwordfield.setText("");
             Repasswordfield.setText("");
