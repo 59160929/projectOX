@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package register;
+package ProjectOX;
 
 /**
  *
@@ -40,7 +40,6 @@ public class room1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(802, 516));
-        setPreferredSize(new java.awt.Dimension(802, 516));
         getContentPane().setLayout(null);
 
         ccbtn.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -95,7 +94,7 @@ public class room1 extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(300, 20, 300, 90);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/register/tumblr_oiwyturZ9q1tf8vylo1_1280.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProjectOX/tumblr_oiwyturZ9q1tf8vylo1_1280.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 520);

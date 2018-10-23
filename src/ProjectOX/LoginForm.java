@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package register;
+package ProjectOX;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -61,7 +61,6 @@ private static final String CONN_STRING="jdbc:mysql://db144.hostinger.in.th/u572
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1030, 860));
-        setPreferredSize(new java.awt.Dimension(1028, 982));
         setSize(new java.awt.Dimension(1200, 1200));
         getContentPane().setLayout(null);
 
@@ -188,7 +187,7 @@ private static final String CONN_STRING="jdbc:mysql://db144.hostinger.in.th/u572
         getContentPane().add(jPanel11);
         jPanel11.setBounds(0, 0, 1060, 130);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/register/xo-logo-mark-mono11.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProjectOX/xo-logo-mark-mono11.png"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(210, 140, 750, 290);
 
@@ -227,7 +226,7 @@ private static final String CONN_STRING="jdbc:mysql://db144.hostinger.in.th/u572
 
     private void Register1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Register1ActionPerformed
         //TODO add your handling code here:
-      new Registrerform().setVisible(true);
+      new Registerform().setVisible(true);
       this.dispose();
     }//GEN-LAST:event_Register1ActionPerformed
         public boolean IsUserMatch() throws SQLException{
@@ -264,7 +263,7 @@ private static final String CONN_STRING="jdbc:mysql://db144.hostinger.in.th/u572
               JOptionPane.showMessageDialog(this, "ลงชื่อเข้าใจสำเร็จ");
           }
              setVisible(false);
-             Lobby mf=  new Lobby();
+             Lobbyform mf=  new Lobbyform();
              mf.setVisible(true);
           }
           else{

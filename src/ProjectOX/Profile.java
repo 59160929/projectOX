@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package register;
+package ProjectOX;
 
 /**
  *
  * @author Admin
  */
-public class Pro extends javax.swing.JFrame {
+public class Profile extends javax.swing.JFrame {
 
     /**
      * Creates new form Pro
      */
-    public Pro() {
+    public Profile() {
         initComponents();
     }
 
@@ -67,7 +67,7 @@ public class Pro extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(340, 350, 320, 40);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/register/user_male4-128.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProjectOX/user_male4-128.png"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(440, 190, 210, 150);
 
@@ -84,7 +84,7 @@ public class Pro extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1030, 180);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/register/tumblr_oiwytwMDKF1tf8vylo1_1280.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProjectOX/tumblr_oiwytwMDKF1tf8vylo1_1280.png"))); // NOI18N
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 180, 1030, 810);
@@ -104,7 +104,7 @@ public class Pro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-new Lobby().setVisible(true);
+new Lobbyform().setVisible(true);
 this.dispose();
 
         // TODO add your handling code here:
@@ -127,20 +127,21 @@ this.dispose();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pro().setVisible(true);
+                new Profile().setVisible(true);
             }
         });
     }

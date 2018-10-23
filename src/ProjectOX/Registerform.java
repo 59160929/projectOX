@@ -1,4 +1,4 @@
-package register;
+package ProjectOX;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,15 +17,14 @@ import javax.swing.JOptionPane;
  *
  * @author Admin
  */
-public class Registrerform extends javax.swing.JFrame {
 
-    private static final String USERNAMEE= "u572797458_soft";
-    private static final String PASSWORDD= "password0880";
-    private static final String CONN_STRING="jdbc:mysql://db144.hostinger.in.th/u572797458_soft";
+public class Registerform extends javax.swing.JFrame {
+
+   
     /**
      * Creates new form Registrerform
      */
-    public Registrerform() {
+    public Registerform() {
         initComponents();
     }
 
@@ -59,7 +58,6 @@ public class Registrerform extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1028, 957));
-        setPreferredSize(new java.awt.Dimension(1028, 957));
         getContentPane().setLayout(null);
 
         jPanel5.setBackground(new java.awt.Color(255, 63, 52));
@@ -93,9 +91,9 @@ public class Registrerform extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(15, 188, 249));
         jPanel4.setLayout(null);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/register/register.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProjectOX/register.png"))); // NOI18N
         jPanel4.add(jLabel2);
-        jLabel2.setBounds(30, 40, 450, 498);
+        jLabel2.setBounds(0, 30, 530, 500);
 
         jPanel7.setBackground(new java.awt.Color(255, 221, 89));
 
@@ -243,7 +241,7 @@ public class Registrerform extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel6);
-        jPanel6.setBounds(-390, 480, 1000, 300);
+        jPanel6.setBounds(-390, 480, 0, 300);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(480, 190, 550, 800);
@@ -265,9 +263,7 @@ public class Registrerform extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordfieldActionPerformed
 
     private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
-        Usernamefield.setText("");
-        Passwordfield.setText("");
-        Repasswordfield.setText("");
+        ClearFill();
         // TODO add your handling code here:
     }//GEN-LAST:event_ClearActionPerformed
 
@@ -276,6 +272,8 @@ public class Registrerform extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_Register1ActionPerformed
 
+    
+    
      boolean russ=false;
 
 
@@ -307,7 +305,7 @@ public class Registrerform extends javax.swing.JFrame {
                                             JOptionPane.showMessageDialog(null,"ชื่อผู้ใช้งานซ้ำ !");
                             }else {
                                 InsertUser(); //insert to table
-                                swap();   //change screen to 
+                                SwapScreen();   //change screen to 
                             }
 
 
@@ -351,10 +349,14 @@ public class Registrerform extends javax.swing.JFrame {
                             russ=rs.next();
 
     }
-    
-    private void swap(){
+    private void ClearFill()  {
+        Usernamefield.setText("");
+        Passwordfield.setText("");
+        Repasswordfield.setText("");
+}
+    private void SwapScreen(){
             
-             Lobby go = new  Lobby();
+             Lobbyform go = new  Lobbyform();
             go.setVisible(true);
             setVisible(false);
         }
@@ -406,20 +408,21 @@ public class Registrerform extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registrerform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registerform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registrerform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registerform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registrerform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registerform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registrerform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registerform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registrerform().setVisible(true);
+                new Registerform().setVisible(true);
             }
         });
     }
